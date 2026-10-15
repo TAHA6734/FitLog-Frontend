@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import { templateApi } from '../../api/templateApi';
-
+import { minutesToTimeSpan } from '../../utils/duration';
 const WORKOUT_TYPES = [
 { value: 0, label: 'Koşu', emoji: '🏃' },
 { value: 1, label: 'Ağırlık', emoji: '🏋️' },
@@ -88,7 +88,7 @@ name: name.trim(),
 type,
 description: description.trim() || null,
 distance: distance ? parseFloat(distance) : null,
-duration: duration ? `00:${duration.padStart(2, '0')}:00` : null,
+duration: minutesToTimeSpan(duration),
 weightKg: extra.weightKg ? parseFloat(extra.weightKg) : null,
 reps: extra.reps ? parseInt(extra.reps, 10) : null,
 sets: extra.sets ? parseInt(extra.sets, 10) : null,

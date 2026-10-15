@@ -50,7 +50,7 @@ const token = localStorage.getItem('accessToken');
 if (!token) return;
 
 const connection = new signalR.HubConnectionBuilder()
-.withUrl('http://localhost:5292/hubs/notifications', {
+.withUrl('https://localhost:7203/hubs/notifications', {
 accessTokenFactory: () => localStorage.getItem('accessToken'),
 })
 .withAutomaticReconnect()

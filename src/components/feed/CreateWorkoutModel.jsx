@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import TagPeopleInput from './TagPeopleInput';
 import { workoutApi } from '../../api/workoutApi';
+import { minutesToTimeSpan } from '../../utils/duration';
 
 const WORKOUT_TYPES = [
 { value: 0, label: 'Koşu', emoji: '🏃' },
@@ -136,7 +137,8 @@ const formData = new FormData();
 formData.append('Type', type);
 if (description.trim()) formData.append('Description', description.trim());
 if (distance) formData.append('Distance', distance);
-if (duration) formData.append('Duration', `00:${duration.padStart(2, '0')}:00`);
+const durationValue = minutesToTimeSpan(duration);
+if (durationValue) formData.append('Duration', durationValue);
 if (extra.weightKg) formData.append('WeightKg', extra.weightKg);
 if (extra.reps) formData.append('Reps', extra.reps);
 if (extra.sets) formData.append('Sets', extra.sets);

@@ -31,6 +31,7 @@ getFollowing: (userId) => axiosClient.get(`/Follow/${userId}/following`),
 export const leaderboardApi = {
 getDistance: () => axiosClient.get('/Leaderboard/distance'),
 getStreak: () => axiosClient.get('/Leaderboard/streak'),
+getDevelopmentScore: () => axiosClient.get('/Leaderboard/development-score'),
 };
 
 

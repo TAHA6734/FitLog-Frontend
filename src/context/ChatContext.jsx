@@ -34,7 +34,7 @@ const token = localStorage.getItem('accessToken');
 if (!token) return;
 
 const connection = new signalR.HubConnectionBuilder()
-.withUrl('http://localhost:5292/hubs/chat', {
+.withUrl('https://localhost:7203/hubs/chat', {
 accessTokenFactory: () => localStorage.getItem('accessToken'),
 })
 .withAutomaticReconnect()
